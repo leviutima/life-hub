@@ -1,17 +1,8 @@
 import { Module } from '@nestjs/common';
-import { createObserveModule } from '@nestjs/observe';
-
-export const { ObserveModule, ObserveInstrument } = createObserveModule();
+import { AuthModule } from './modules/auth/auth.module.js';
+import { EnvModule } from './shared/infra/config/env.module.js';
 
 @Module({
-  imports: [
-    ObserveModule.forRoot({
-      appKey: 'YOUR_APP_KEY',
-      appSecret: 'YOUR_APP_SECRET',
-      serviceId: 'lifehub-backend',
-    }),
-  ],
-  controllers: [],
-  providers: [],
+  imports: [EnvModule, AuthModule],
 })
 export class AppModule {}
