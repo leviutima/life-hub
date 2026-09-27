@@ -1,0 +1,12 @@
+import { z } from 'zod'
+
+/**
+ * Espelha o AuthenticateUserDto do backend. Validar aqui e so para feedback
+ * imediato -- quem manda continua sendo o backend.
+ */
+export const loginSchema = z.object({
+  email: z.email('Informe um e-mail válido.'),
+  password: z.string().min(1, 'Informe sua senha.'),
+})
+
+export type LoginFormValues = z.infer<typeof loginSchema>
